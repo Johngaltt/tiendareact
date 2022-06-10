@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./NavBar.css"
+import Card  from './CartWidget';
+import { List } from '../ItemListContainer';
 
 export const NavBar = () => {
 
@@ -11,5 +13,11 @@ export const NavBar = () => {
       <li><a href=".">Contacto</a></li>
       <li><a href=".">Menu</a></li>
     </ul>
-    </nav></>;
+    </nav>
+
+    <Card />
+    <List />
+    </>;
 };
+
+export default NavBar;
