@@ -10,7 +10,7 @@ nav{
   height: 70px;
   display:flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #36157c;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
