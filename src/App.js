@@ -1,12 +1,12 @@
 import React from "react";
 import './App.css';
 import { NavBar } from './components/NavBar/NavBar';
-import  ListaProps  from './components/ItemListContainer';
+import ItemCount from "./components/ItemCount/ItemCount";
 
 
  function App() {
   return <> <NavBar/> 
-  <ListaProps text="Listado de Productos"/>
+  <ItemCount initial="0" min="0" max="10" />
   </>
 }
 

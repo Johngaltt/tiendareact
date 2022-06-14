@@ -1,0 +1,44 @@
+.Icount {
+    text-align: center;
+  }
+
+.container {
+    margin: 0 auto;
+    border: 1px solid #36157c;
+    width: 300px;
+    margin-bottom: 15px;
+    height: 50px;
+  }
+  
+  .btn__input {
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+  }
+  
+  .btn__decrement {
+    border: none;
+    background: transparent;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 24px;
+    color: #36157c solid 1px;
+  }
+  
+  .btn__increment {
+    border: none;
+    background: transparent;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 24px;
+    color: #36157c solid 1px;
+  }
+  
+  .btn__carrito {
+    background: transparent;
+    padding: 10px 10px;
+    color: #36157c solid 1px;
+    border: none;
+    outline: #36157c solid 1px;
+  }
