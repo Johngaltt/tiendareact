@@ -7,7 +7,7 @@ const ItemDetailContainer = () => {
     const[productos,setProductos]=useState()
     useEffect(()=>{
 
-    setTimeout(()=>{fetch("https://api.mercadolibre.com/sites/MLA/search?category=MLA1055")
+    setTimeout(()=>{fetch("https://api.mercadolibre.com/sites/MLA/search?q=Motorola%20G60&limit=1")
     .then(response=>response.json())
     .then(data=>setProductos(data.results)); },2000)},[]);
 

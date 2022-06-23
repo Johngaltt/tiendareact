@@ -18,7 +18,7 @@ className="mb-2">
     <Card.Title>{jsonpack.title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Precio:{jsonpack.price}</Card.Subtitle>
     <Card.Text>
-        Cantidad{jsonpack.available_quantity}<p></p>
+        Cantidad disponible:{jsonpack.available_quantity}<p></p>
         </Card.Text>
   </Card.Body>
 </Card>
