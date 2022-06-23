@@ -1,16 +1,18 @@
 import React from "react";
 import style from "./NavBar.css"
 import Card  from './CartWidget';
+import {Link} from 'react-router-dom';
 
 
 export const NavBar = () => {
 
 	return <>
   <nav className={style.nav}>
-  <h1>Tienda para Coder</h1>
+  <h1>Tienda Hardware</h1>
   
     <ul>
-      <li><a href=".">Home</a></li>
+    <li><Link to={`/categories`}>
+Categorias</Link></li>
       <li><a href=".">Contacto</a></li>
       <li><a href=".">Menu</a></li> 
     </ul>

@@ -1,23 +1,60 @@
 import ItemDetail from './itemDetail';
-
-
+import {useParams} from "react-router-dom";
 import React, {useState,useEffect} from 'react';
+import productos from './data.json';
 
-const ItemDetailContainer = () => {
-    const[productos,setProductos]=useState()
+
+
+const ItemDetailContainer = ({items}) => {
+
+
+
+    const[producto,setProducto]=useState([])
+const {itemid}=useParams();
     useEffect(()=>{
 
-    setTimeout(()=>{fetch("https://api.mercadolibre.com/sites/MLA/search?q=Motorola%20G60&limit=1")
-    .then(response=>response.json())
-    .then(data=>setProductos(data.results)); },2000)},[]);
 
-    return (
-    <div class="p-3 mb-2 bg-dark text-white">
+    if(items)
+    {
+console.log("item def");
 
-        {productos &&  productos.map(item=>
-        <ItemDetail key={item.id} jsonpack={item} />)}
-    </div>
-   )
     }
 
+    else{
+
+
+items=productos;
+console.log("no item");
+    }
+
+
+
+        const call=new Promise ((resolve)=>{
+            setTimeout(()=>{
+                resolve(items)
+            },2000)
+        })
+
+        call.then(response=>{
+            console.log(itemid);
+            console.log(response[itemid-1]);
+            setProducto(response[itemid-1]);
+        })
+    },[])
+
+
+    return (
+
+
+
+    <div class="p-3 mb-2 bg-dark text-white">
+
+
+            <ItemDetail  jsonpack={producto} />
+           </div>
+            )
+
+
+
+}
 export default ItemDetailContainer;

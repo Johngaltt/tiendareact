@@ -1,9 +1,14 @@
 import React from "react";
 import {Card} from 'react-bootstrap';
 import ItemCount from "./ItemCount/ItemCount";
+import {Link} from 'react-router-dom'
 
 
 const Item =({jsonpack})=>{
+  const itemid=jsonpack.id;
+  console.log(itemid);
+
+
   return(
       <>
 
@@ -14,6 +19,9 @@ className="mb-2">
   <Card.Img variant="top"  src={jsonpack.pictureurl} />
             </Card.Header>
   <Card.Body>
+
+  <Link to={`/item/${itemid}`}><Card.Link>{jsonpack.title}</Card.Link></Link>
+
     <Card.Title>{jsonpack.title}</Card.Title>
         <Card.Subtitle className="mb-3 text-primary">Precio:{jsonpack.price}</Card.Subtitle>
     <Card.Text>
