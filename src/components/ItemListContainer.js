@@ -28,7 +28,7 @@ const ItemListContainer = ({name}) => {
         return (
     
            <div name="a">
-        <div class="p-3 mb-2 bg-dark text-white">
+        <div class="p-3 mb-2">
             {name}
     
     

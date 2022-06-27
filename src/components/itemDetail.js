@@ -10,24 +10,24 @@ const ItemDetail =({jsonpack})=>{
     return(
       <>
         <div id="centerman" align="center">
-        <Card  border="light"  bg="dark" style={{ width: '18rem' }}
+        <Card  border="primary"  bg="light" style={{ width: '18rem' }}
 className="mb-2">
 
 <Card.Header>
 
-  <Card.Img variant="top"  src={jsonpack.thumbnail} />
+  <Card.Img variant="top"  src={jsonpack.pictureurl} />
             </Card.Header>
   <Card.Body>
   <Link to={`/item/${jsonpack.id}`}>
 
-  <Card.Link href="#" >{jsonpack.title}</Card.Link>
+  <Card.Link className="mb-2 text-primary" href="#" >{jsonpack.title}</Card.Link>
   </Link>
 
   <Card.Subtitle className="mb-2 text-muted">Precio:{jsonpack.price}</Card.Subtitle>
   <Card.Text>
-        Cantidad disponible:{jsonpack.available_quantity}<p></p>
+        Cantidad disponible:{jsonpack.stock}
   </Card.Text>
-  <ItemCount initial="0" min="0" max="10" />
+  <ItemCount/>
   </Card.Body>
 </Card>
 

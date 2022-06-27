@@ -1,40 +1,44 @@
-import React, { useState } from "react";
-import "./ItemCount.css"
+import React from "react";
+import {Button,ButtonGroup,Table} from 'react-bootstrap';
+const ItemCount=({min,max,onAdd,count})=>{
 
-const ItemCount = ({ initial, min, max }) => {
-  const [counter, setCounter] = useState(parseInt(initial));
+console.log(count);
+    return (
+<>
+        <p></p>
+        <p></p>
 
-  const incrementCounter = () => {
-    counter + 1 <= parseInt(max) ? setCounter(counter + 1) : parseInt(max);
-  };
 
-  const decrementCounter = () => {
-    counter - 1 >= parseInt(min) ? setCounter(counter - 1) : parseInt(min);
-  };
+        <ButtonGroup aria-label="Basic example">
+        <Table striped bordered hover variant="light" size="sm" align="center" >
 
-  const onAdd = () => {
-    console.log(counter);
-  };
+  <tbody style={{ width: '18rem' }}>
+    <tr>
+        <td>
+    <Button variant="secondary"  onClick={min}>-</Button>
+            </td>
+      <td align="center">{count}</td>
+          <td>
+        <Button variant="secondary" onClick={max}>+</Button>
+              </td>
+    </tr>
+    <tr>
+      <td>  </td>
+      <td align="center"  >
+          <Button variant="secondary"   disabled={ count===0}  onClick={onAdd} align="center">Agregar al Carrito</Button>
+</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</Table>
 
-  return (
-    <div className="App">
-      <h3>Cantidad</h3>
-      <div className="container">
-        <button className="btn__decrement" onClick={decrementCounter}>
-          <span className="innerbutton">-</span>
-        </button>
-        <input className="btn__input" type="number" disabled value={counter} />
-        <button className="btn__increment" onClick={incrementCounter}>
-          <span className="innerbutton">+</span>
-        </button>
-        <br />
-        <br />
-      </div>
-      <button className="btn__carrito" onClick={onAdd}>
-        Agregar al carrito
-      </button>
-    </div>
-  );
+</ButtonGroup>
+
+
+</>
+    );
+
+
 };
 
 export default ItemCount;

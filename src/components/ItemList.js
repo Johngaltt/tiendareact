@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 let count=1;
 const ItemList = ({items}) =>{
 useEffect(()=>{
-    if(count==1&& (categoryid>2 ||categoryid<=0))
+    if(count===1&& (categoryid>2 ||categoryid<=0))
         alert("2 categorias disponibles");
 count=count+1;
 });
@@ -28,7 +28,7 @@ const {categoryid}=useParams(null);
     }
 else {
     console.log(categoryid);
-    ListTemplate=items.filter(item=>item.categoryid==categoryid).map(filteredName=>(<Item key={filteredName.id} jsonpack={filteredName}/>));
+    ListTemplate=items.filter(item=>item.categoryid===categoryid).map(filteredName=>(<Item key={filteredName.id} jsonpack={filteredName}/>));
 
 
 }

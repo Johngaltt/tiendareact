@@ -1,6 +1,5 @@
 import React from "react";
 import {Card} from 'react-bootstrap';
-import ItemCount from "./ItemCount/ItemCount";
 import {Link} from 'react-router-dom'
 
 
@@ -20,15 +19,12 @@ className="mb-2">
             </Card.Header>
   <Card.Body>
 
-  <Link to={`/item/${itemid}`}><Card.Link>{jsonpack.title}</Card.Link></Link>
+  <Link to={`/item/${itemid}`}><Card.Link className="mb-3 text-primary">{jsonpack.title}</Card.Link></Link>
 
-    <Card.Title>{jsonpack.title}</Card.Title>
         <Card.Subtitle className="mb-3 text-primary">Precio:{jsonpack.price}</Card.Subtitle>
     <Card.Text>
-        Descripción<p></p>{jsonpack.description}
+        Descripción:<p></p>{jsonpack.description}
         </Card.Text>
-        <ItemCount initial="0" min="0" max="10" />
-     
   </Card.Body>
 </Card>
 
