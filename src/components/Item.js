@@ -16,7 +16,7 @@ className="mb-2">
 
 <Card.Header>
   <Card.Img variant="top"  src={jsonpack.pictureurl} />
-            </Card.Header>
+</Card.Header>
   <Card.Body>
 
   <Link to={`/item/${itemid}`}><Card.Link className="mb-3 text-primary">{jsonpack.title}</Card.Link></Link>
@@ -27,8 +27,6 @@ className="mb-2">
         </Card.Text>
   </Card.Body>
 </Card>
-
-
       </>
 
 

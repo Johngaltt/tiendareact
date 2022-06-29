@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./NavBar.css"
-import Cart  from './CartWidget';
+import Carro  from './CartWidget';
 import {Link} from 'react-router-dom';
+import { Navbar, NavItem,NavTabs,NavDropdown,MenuItem,Nav,Form,FormControl,Button,Dropdown,DropdownButton} from 'react-bootstrap';
 
 
 export const NavBar = () => {
@@ -11,12 +12,19 @@ export const NavBar = () => {
   <h1>Tienda Hardware</h1>
   
     <ul>
-    <li><Link to={`/categories`}>
-Categorias</Link></li>
-      <li><a href="#">Contacto</a></li>
-      <li><a href="#">Menu</a></li> 
+      <Nav.Link>
+<Link to={`/categories`}>
+    Inicio
+</Link>
+    </Nav.Link>    
+      <NavDropdown title="Categorias" id="basic-nav-dropdown">
+      <li><NavDropdown.Item><Link to={`/categories/1`}>AMD</Link> </NavDropdown.Item></li>
+      <li><NavDropdown.Item><Link to={`/categories/2`}>INTEL</Link> </NavDropdown.Item></li>
+      <NavDropdown.Divider />
+      </NavDropdown>
+      <li><a href=".">Menu</a></li> 
     </ul>
-    <Cart />
+    <Carro />
     </nav>
 
 
