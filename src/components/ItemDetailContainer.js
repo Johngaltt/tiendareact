@@ -1,22 +1,19 @@
-import ItemDetail from './itemDetail';
+
+import {ItemDetail} from './ItemDetail';
 import {useParams} from "react-router-dom";
 import React, {useState,useEffect} from 'react';
 import productos from './data.json';
 
 
-
 const ItemDetailContainer = ({items}) => {
-
-
-
-    const[producto,setProducto]=useState([])
+const[producto,setProducto]=useState([])
 const {itemid}=useParams();
     useEffect(()=>{
 
 
     if(items)
     {
-console.log("item def");
+console.log("Good news item is defined");
 
     }
 
@@ -24,7 +21,7 @@ console.log("item def");
 
 
 items=productos;
-console.log("no item");
+console.log("badnews");
     }
 
 
@@ -47,7 +44,7 @@ console.log("no item");
 
 
 
-    <div class="p-3 mb-2">
+    <div class="p-3 mb-2 bg-light text-primary">
 
 
             <ItemDetail  jsonpack={producto} />

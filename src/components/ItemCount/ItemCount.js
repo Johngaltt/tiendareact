@@ -1,8 +1,11 @@
-import React from "react";
 import {Button,ButtonGroup,Table} from 'react-bootstrap';
-import {ItemDetailButton} from '../ItemDetail';
+import React, {useContext} from 'react';
+import {CartContext} from '../CartContext';
+import {useParams} from "react-router-dom";
 const ItemCount=({min,max,count,product_name})=>{
-console.log("En item count:"+count);
+const {itemid}=useParams();
+
+const {additem}=useContext(CartContext);
 
 
     return (
@@ -21,17 +24,17 @@ console.log("En item count:"+count);
   <tbody style={{ width: '18rem' }}>
     <tr>
         <td>
-    <Button variant="primary"  onClick={min}>-</Button>
+    <Button variant="secondary"  onClick={min}>-</Button>
             </td>
       <td align="center">{count}</td>
           <td>
-        <Button variant="primary" onClick={max}>+</Button>
+        <Button variant="secondary" onClick={max}>+</Button>
               </td>
     </tr>
     <tr>
       <td>  </td>
       <td align="center">
-          <ItemDetailButton contador={count}/>
+        <button disabled={count===0} id="but2" onClick={()=>additem({itemid},{count})}>Agregar a carrito</button>
 </td>
       <td> </td>
     </tr>

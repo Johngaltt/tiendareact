@@ -2,7 +2,7 @@ import React from "react";
 import style from "./NavBar.css"
 import Carro  from './CartWidget';
 import {Link} from 'react-router-dom';
-import { Navbar, NavItem,NavTabs,NavDropdown,MenuItem,Nav,Form,FormControl,Button,Dropdown,DropdownButton} from 'react-bootstrap';
+import { NavDropdown,Nav} from 'react-bootstrap';
 
 
 export const NavBar = () => {
