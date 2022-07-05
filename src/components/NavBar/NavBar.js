@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom';
 import { NavDropdown,Nav} from 'react-bootstrap';
 
 
-export const NavBar = () => {
+const NavBar = () => {
 
-	return <>
+  return (
   <nav className={style.nav}>
   <h1>Tienda Hardware</h1>
   
@@ -28,7 +28,7 @@ export const NavBar = () => {
     </nav>
 
 
-    </>;
-};
+)
+}
 
 export default NavBar;

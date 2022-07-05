@@ -6,52 +6,51 @@ import productos from './data.json';
 
 
 const ItemDetailContainer = ({items}) => {
-const[producto,setProducto]=useState([])
-const {itemid}=useParams();
-    useEffect(()=>{
-
-
-    if(items)
-    {
-console.log("Good news item is defined");
-
+    const[producto,setProducto]=useState([])
+    const {itemid}=useParams();
+        useEffect(()=>{
+    
+    
+        if(items)
+        {
+    console.log("Good news item is defined");
+    
+        }
+    
+        else{
+    
+    items=productos;
+    console.log("badnews");
+        }
+    
+    
+    
+            const call=new Promise ((resolve)=>{
+                setTimeout(()=>{
+                    resolve(items)
+                },2000)
+            })
+    
+            call.then(response=>{
+                console.log(itemid);
+                console.log(response[itemid-1]);
+                setProducto(response[itemid-1]);
+            })
+        },[])
+    
+    
+        return (
+    
+    
+    
+        <div class="p-3 mb-2 bg-light text-dark">
+    
+    
+                <ItemDetail  jsonpack={producto} />
+               </div>
+                )
+    
+    
+    
     }
-
-    else{
-
-
-items=productos;
-console.log("badnews");
-    }
-
-
-
-        const call=new Promise ((resolve)=>{
-            setTimeout(()=>{
-                resolve(items)
-            },2000)
-        })
-
-        call.then(response=>{
-            console.log(itemid);
-            console.log(response[itemid-1]);
-            setProducto(response[itemid-1]);
-        })
-    },[])
-
-
-    return (
-
-
-
-    <div class="p-3 mb-2 bg-light text-primary">
-
-
-            <ItemDetail  jsonpack={producto} />
-           </div>
-            )
-
-
-
-}
-export default ItemDetailContainer;
+    export default ItemDetailContainer;

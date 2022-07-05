@@ -22,13 +22,16 @@ const ItemListContainer = ({name}) => {
             setItems(response)
         })
     
-
+    
+    
+    
+    
                  console.log(cat);
     
         return (
     
-           <div name="a">
-        <div class="p-3 mb-2">
+           <div name="test">
+        <div class="p-3 mb-2 bg-light text-dark">
             {name}
     
     
