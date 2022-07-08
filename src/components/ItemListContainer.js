@@ -1,26 +1,31 @@
 import ItemList from './ItemList';
-import jsonpack from './data.json';
-import React, {useState} from 'react';
+//import jsonpack from './data.json';
+import React, {useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
+import {db} from '../firebase';
+
 
 
 const ItemListContainer = ({name}) => {
     const {categoryid}=useParams();
-    
-    
     const[cat]=useState(categoryid);
         const[item,setItems]=useState([])
-        const call = new Promise((resolve)=>{
-            setTimeout(()=>{
-                resolve(jsonpack)
+        useEffect(()=>{
+            db();
+            const itemCollection=db.collection("items");
+    console.log("categoryid en ItemListContainer"+categoryid)
+            itemCollection.get().then((querySnapshot)=>{
+          if(querySnapshot.sise===0)
+                {
+    console.log("No results!");
+                }
+                setItems(querySnapshot.docs.map(doc=>doc.data()));
+            }).catch((error)=>{
+                console.log("Error searching items",error);
+            }).finally(()=>{
+            });
+        },[]);
     
-    
-            },2000)
-        })
-    
-        call.then(response=> {
-            setItems(response)
-        })
     
     
     
@@ -50,4 +55,3 @@ const ItemListContainer = ({name}) => {
     
     
     export default ItemListContainer;
-    

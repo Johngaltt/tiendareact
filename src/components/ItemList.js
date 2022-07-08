@@ -7,13 +7,13 @@ let count=1;
 const ItemList = ({items}) =>{
 useEffect(()=>{
     if(count===1&& (categoryid>2 ||categoryid<=0))
-        alert("2 categorias disponibles");
+        alert("Solo categorias 1-2 están disponibles por favor cambiar categoria");
 count=count+1;
 });
 
 const {categoryid}=useParams(null);
     let ListTemplate;
-    console.log(categoryid);
+    console.log("categoryid"+categoryid);
 
 
 
@@ -21,7 +21,7 @@ const {categoryid}=useParams(null);
 
     if (!categoryid) {
 
-    console.log("funcion");
+    console.log("In the function dude");
       ListTemplate = items.map(item=><Item key={item.id} jsonpack={item} />);
 
 
