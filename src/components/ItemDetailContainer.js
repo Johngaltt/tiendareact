@@ -3,54 +3,54 @@ import {ItemDetail} from './ItemDetail';
 import {useParams} from "react-router-dom";
 import React, {useState,useEffect} from 'react';
 import {db} from '../firebase';
+import {doc, getDoc} from "firebase/firestore"
 
-const ItemDetailContainer = ({items}) => {
-    const[item,setItem]=useState([])
-    const[producto,setProducto]=useState([])
-const {itemid}=useParams();
+const ItemDetailContainer = () => {
+    const [item,setItem] = useState("")
+    const [loading, setLoading] = useState(false)
 
+    const {itemId} = useParams()
 
-    useEffect(()=>{
-        db();
-        const itemCollection=db.collection("items");
-        itemCollection.get().then((querySnapshot)=>{
-      if(querySnapshot.sise===0)
-            {
-console.log("No results!");
-            }
-            setItem(querySnapshot.docs.map(doc=>doc.data()));
-        }).catch((error)=>{
-            console.log("Error searching items",error);
-        }).finally(()=>{
-        });
-    },[]);
+    useEffect(()=> {
+        setLoading(true)
+        
+        const docRef = doc(db, "items",itemId)
+        getDoc(docRef)
+            .then(doc => {
+                setItem ({id: doc.id, ...doc.data()})
+            })
+            .finally(()=>{
+                setLoading(false)
+            })
 
+    },[itemId]);
 
-
-
-
-
-    console.log("items en item container:"+items);
-
-
-useEffect(() => {
-    setProducto(item[itemid-1]);
-  },[item]);
+if(item.length)
+console.log("items en item container:"+item[0].title);
 
 
 
-
+    if(loading)
+    {
 
     return (
-
-
-
     <div class="p-3 mb-2 bg-light text-dark">
-
-
-            <ItemDetail  jsonpack={producto} />
+            <ItemDetail  jsonpack={item[0]} />
            </div>
             )
+
+    }
+
+    else {
+        return (
+        <>
+    <div class="p-3 mb-2 bg-light text-dark">
+        <h1>        El itemid ingresado no existe por favor ingresar un itemid que exista</h1>
+            </div>
+
+            </>
+        )
+    }
 
 
 

@@ -3,53 +3,40 @@ import ItemList from './ItemList';
 import React, {useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import {db} from '../firebase';
+import {collection, getDocs, query, where} from "firebase/firestore"
 
 
+const ItemListContainer = () => {
+    const [productsList,setProductList] = useState([])
+    const [loading, setLoading] = useState(false)
 
-const ItemListContainer = ({name}) => {
-    const {categoryid}=useParams();
-    const[cat]=useState(categoryid);
-        const[item,setItems]=useState([])
-        useEffect(()=>{
-            db();
-            const itemCollection=db.collection("items");
-    console.log("categoryid en ItemListContainer"+categoryid)
-            itemCollection.get().then((querySnapshot)=>{
-          if(querySnapshot.sise===0)
-                {
-    console.log("No results!");
-                }
-                setItems(querySnapshot.docs.map(doc=>doc.data()));
-            }).catch((error)=>{
-                console.log("Error searching items",error);
-            }).finally(()=>{
-            });
-        },[]);
-    
-    
-    
-    
-    
-    
-                 console.log(cat);
+    const { categoryid } = useParams()
+    useEffect(()=> {
+        setLoading(true)
+
+        const productsRef = collection(db, "items")
+        const q = categoryid ? query (productsRef,where("category","==", categoryid)): productsRef
+
+        getDocs(q)
+            .then(resp=> {
+                const items = resp.docs.map((doc)=> ({id: doc.id, ...doc.data()}))
+                setProductList(items)
+            })
+            .finally(()=>{
+                setLoading(false)
+            })
+        
+    },[categoryid]);
     
         return (
-    
-           <div name="test">
+            
+           <div name="test" >
         <div class="p-3 mb-2 bg-light text-dark">
-            {name}
-    
-    
-    
-            <ItemList items={item}/>
-    
-    
-    
+            {loading}
+            <ItemList items={productsList}/>
            </div>
-    
-    
-    
                </div>
+          
        )
     }
     
